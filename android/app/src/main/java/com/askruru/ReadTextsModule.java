@@ -1,6 +1,7 @@
 package com.askruru;
 
-import com.facebook.react.bridge.NativeModule; 
+import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext; 
 import com.facebook.react.bridge.ReactContext; 
 import com.facebook.react.bridge.ReactContextBaseJavaModule; 
@@ -22,7 +23,8 @@ public class ReadTextsModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getTextMessages() {
+    public void getTextMessages(Callback error, Callback success) {
+        success.invoke();
 
     }
     

@@ -7,27 +7,46 @@
 import React, { Component } from 'react'
 import {
   AppRegistry,
+  StyleSheet,
   Text,
   View
 } from 'react-native'
 
 import ReadTexts from './ReadTexts'
 
-class AskRuru extends Component {
+class App extends Component {
 
   constructor(props) {
     super(props)
-    ReadTexts.getTextMessages()
+    this.state = {
+      text: 'Hello World'
+    }
+    ReadTexts.getTextMessages(() => {
+      console.log('error')
+    },
+    () => {
+      this.setState({text: 'I ran native code!'})
+    })
   }
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>
-          Welcome to React Native!
+          {this.state.text}
         </Text>
       </View>
     );
   }
+  
 }
 
-AppRegistry.registerComponent('AskRuru', () => AskRuru);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  }
+});
+
+module.exports = App
