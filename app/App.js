@@ -24,8 +24,8 @@ class App extends Component {
     ReadTexts.getTextMessages(() => {
       console.log('error')
     },
-    () => {
-      this.setState({text: 'I ran native code!'})
+    (sms) => {
+      this.setState({text: sms})
     })
   }
   render() {
