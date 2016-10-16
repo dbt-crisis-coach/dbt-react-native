@@ -6,7 +6,6 @@
 
 import React, { Component } from 'react'
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View
@@ -16,28 +15,29 @@ import ReadTexts from './ReadTexts'
 
 class App extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
-      text: 'Hello World'
+      sms:[],
+      smsCount: 0
     }
     ReadTexts.getTextMessages(() => {
       console.log('error')
     },
     (sms) => {
-      this.setState({text: sms})
+      this.setState({sms: sms, smsCount: sms.length})
+      console.log(this.state.sms)
     })
   }
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <Text>
-          {this.state.text}
+          Hello! There is {this.state.smsCount} texts
         </Text>
       </View>
-    );
+    )
   }
-  
 }
 
 const styles = StyleSheet.create({
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
   }
-});
+})
 
 module.exports = App
