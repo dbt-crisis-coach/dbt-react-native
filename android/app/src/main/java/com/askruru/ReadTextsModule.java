@@ -30,7 +30,7 @@ public class ReadTextsModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void getTextMessages(Callback error, Callback success) {
-        Cursor cursor = getReactApplicationContext().getContentResolver().query(Uri.parse("content://sms/inbox"), null, null, null, null);
+        Cursor cursor = getReactApplicationContext().getContentResolver().query(Uri.parse("content://sms"), null, null, null, null);
 
         WritableArray allSMS = Arguments.createArray();
         if (cursor.moveToFirst()) { // must check the result to prevent exception
